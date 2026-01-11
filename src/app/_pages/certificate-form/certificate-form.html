@@ -1,0 +1,28 @@
+<form #form="ngForm" novalidate class="card-form mt-4">
+
+  <h3 class="text-center">Novo Certificado</h3>
+
+  <div class="mb-3">
+    <label class="form-label" for="name">Nome</label>
+    <input [(ngModel)]="name" #nomeRef="ngModel" class="form-control" type="text" name="name"
+      placeholder="Nome do aluno" />
+    @if (nomeRef.errors?.['required']) {
+    <div class="text-danger">O nome é obrigatório</div>
+    }
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label" for="activy">Atividade</label>
+    <input [(ngModel)]="activy" class="form-control" type="text" name="activy" placeholder="Atividade exercida"
+      required />
+  </div>
+  <app-primary-button>Adicionar</app-primary-button>
+
+
+  <h5>Lista de atividades</h5>
+  @for (activy of activies; track $index) {
+  <app-activy-item></app-activy-item>
+  }
+  <app-primary-button>Criar Certificado</app-primary-button>
+
+</form>
